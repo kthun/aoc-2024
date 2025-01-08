@@ -1,6 +1,12 @@
 import kotlin.math.abs
 
 fun main() {
+    fun parseInput(input: List<String>) = input.map { line ->
+        val first = line.substringBefore(" ").toInt()
+        val second = line.substringAfterLast(" ").toInt()
+        first to second
+    }.unzip()
+
     fun part1(input: List<String>): Int {
         val (listA, listB) = parseInput(input)
 
@@ -28,9 +34,3 @@ fun main() {
     check(part2(testInput) == 31)
     part2(input).println()
 }
-
-fun parseInput(input: List<String>) = input.map { line ->
-    val first = line.substringBefore(" ").toInt()
-    val second = line.substringAfterLast(" ").toInt()
-    first to second
-}.unzip()
