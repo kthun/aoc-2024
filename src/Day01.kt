@@ -12,8 +12,10 @@ fun main() {
     fun part2(input: List<String>): Int {
         val (listA, listB) = parseInput(input)
 
+        val frequencies = listB.groupingBy { it }.eachCount()
+
         return listA.sumOf { a ->
-            a * listB.count { it == a }
+            a * frequencies.getOrDefault(a, 0)
         }
     }
 
